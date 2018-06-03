@@ -10,7 +10,7 @@ ECHO.
 ECHO ...............................................
 ECHO ECA User Support Fix-o-Lot v1.0
 ECHO Windows 7, 8, 8.1, 10 ONLY!!
-ECHO PRESS 1, 2, 3, 5, 6, OR 7 to select your task, or 8 to EXIT.
+ECHO PRESS 1, 2, 3, 5, 6, 7, 8 to select your task, or 9 to EXIT.
 ECHO ...............................................
 ECHO.
 ECHO 1 - Replace peers.dat
@@ -20,7 +20,8 @@ ECHO 4 - Mnemonic Phrase Not Working Fix.....New Wallet
 ECHO 5 - Upgrade from QT wallet
 ECHO 6 - Quit Wallets
 ECHO 7 - Rescan Wallet
-ECHO 8 - EXIT
+ECHO 8 - Blockchain Update Fast Sync
+ECHO 9 - EXIT
 ECHO.
 
 SET /P M=Type 1, 2, 3, 4, 5, 6, 7, or 8 then press ENTER: 
@@ -31,7 +32,8 @@ IF %M%==4 GOTO MNENOMIC
 IF %M%==5 GOTO UPGRADE
 IF %M%==6 GOTO EXPERTQUIT
 IF %M%==7 GOTO RESCANME
-IF %M%==8 GOTO EXIT
+IF %M%==8 GOTO BLOCKCHAINUPDATEFAST
+IF %M%==9 GOTO EXIT
 
 :PEERS
 echo.
@@ -281,12 +283,41 @@ echo.
 pause
 GOTO RESCANMELOOP
 )
-
 echo.
 echo Script done, press any key to return to the menu...
 echo.
 pause
 GOTO MENU
+
+:BLOCKCHAINUPDATEFAST
+echo.
+echo -=ECA User Spport Fix-o-Lot=-
+echo.
+echo Last Updated:%LASTUPDATE%
+echo.
+echo Checking for Electra folder...
+IF EXIST %APPDATA%\Electra\ (
+echo Copying files to %APPDATA%\Electra
+copy peers.dat %APPDATA%\Electra\ /y
+echo.
+copy blk0001.dat %APPDATA%\Electra\ /y
+echo.
+xcopy /s txleveldb %APPDATA%\Electra\txleveldb /E /y
+echo.
+xcopy /s database %APPDATA%\Electra\database\ /E /y
+echo.
+echo Wallet successfully updated!
+echo.
+echo Restart your wallet and make sure you start getting connections
+echo.
+pause
+GOTO MENU
+) ELSE (
+echo No Electra folder detected.
+echo Going back to menu...
+pause
+GOTO MENU
+)
 
 :EXIT
 exit
