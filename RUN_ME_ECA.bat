@@ -48,9 +48,9 @@ taskkill /F /IM  "electrad-windows.exe" /T >nul 2>&1
 taskkill /F /IM  "Electra-qt.exe" /T >nul 2>&1
 echo.
 echo Checking for Electra folder...
-IF EXIST %APPDATA%\Electra\ (
-echo Copying files to %APPDATA%\Electra
-copy peers.dat %APPDATA%\Electra\ /y
+IF EXIST "%APPDATA%"\Electra\ (
+echo Copying files to "%APPDATA%"\Electra
+copy peers.dat "%APPDATA%"\Electra\ /y
 echo.
 echo peers.dat successfully updated!
 echo.
@@ -75,17 +75,17 @@ echo.
 echo Last Updated:%LASTUPDATE%
 echo.
 echo Checking for Electra folder...
-IF EXIST %APPDATA%\Electra\ (
-mkdir %SYSTEMDRIVE%\ElectraWalletBackup\
-echo Copying wallet.dat to %USERPROFILE%\Documents\ElectraWalletBackup
-copy %APPDATA%\Electra\wallet.dat %SYSTEMDRIVE%\ElectraWalletBackup\ /y
-copy %APPDATA%\Electra\wallet.dat %SYSTEMDRIVE%\ElectraWalletBackup\%today%wallet.dat /y
+IF EXIST "%APPDATA%"\Electra\ (
+mkdir "%SYSTEMDRIVE%"\ElectraWalletBackup\
+echo Copying wallet.dat to "%USERPROFILE%"\Documents\ElectraWalletBackup
+copy "%APPDATA%"\Electra\wallet.dat "%SYSTEMDRIVE%"\ElectraWalletBackup\ /y
+copy "%APPDATA%"\Electra\wallet.dat "%SYSTEMDRIVE%"\ElectraWalletBackup\%today%wallet.dat /y
 echo.
 echo wallet.dat successfully backedup!
 echo.
 echo Press any key to open up the backedup folder...
 pause
-explorer %SYSTEMDRIVE%\ElectraWalletBackup\
+explorer "%SYSTEMDRIVE%"\ElectraWalletBackup\
 echo.
 pause
 GOTO MENU
@@ -105,20 +105,20 @@ echo Last Updated:%LASTUPDATE%
 echo.
 echo Protecting files wallet.dat, peers.dat, and Electra.conf...
 echo.
-attrib +r %APPDATA%\Electra\wallet.dat
-attrib +r %APPDATA%\Electra\Electra.conf
-attrib +r %APPDATA%\Electra\peers.dat
+attrib +r "%APPDATA%"\Electra\wallet.dat
+attrib +r "%APPDATA%"\Electra\Electra.conf
+attrib +r "%APPDATA%"\Electra\peers.dat
 echo Now deleting Electra wallet files except protected files...
 echo.
-del /S /Q %APPDATA%\Electra\*.*
-rmdir /Q %APPDATA%\Electra\database
-rmdir /Q %APPDATA%\Electra\txleveldb
+del /S /Q "%APPDATA%"\Electra\*.*
+rmdir /Q "%APPDATA%"\Electra\database
+rmdir /Q "%APPDATA%"\Electra\txleveldb
 echo.
 echo Files Deleted
 echo.
-attrib -r %APPDATA%\Electra\wallet.dat
-attrib -r %APPDATA%\Electra\Electra.conf
-attrib -r %APPDATA%\Electra\peers.dat
+attrib -r "%APPDATA%"\Electra\wallet.dat
+attrib -r "%APPDATA%"\Electra\Electra.conf
+attrib -r "%APPDATA%"\Electra\peers.dat
 echo Unlocking files wallet.dat, peers.dat and Electra.conf to be used for wallet...
 echo.
 echo Files Unlocked
@@ -296,15 +296,15 @@ echo.
 echo Last Updated:%LASTUPDATE%
 echo.
 echo Checking for Electra folder...
-IF EXIST %APPDATA%\Electra\ (
-echo Copying files to %APPDATA%\Electra
-copy peers.dat %APPDATA%\Electra\ /y
+IF EXIST "%APPDATA%"\Electra\ (
+echo Copying files to "%APPDATA%"\Electra
+copy peers.dat "%APPDATA%"\Electra\ /y
 echo.
-copy blk0001.dat %APPDATA%\Electra\ /y
+copy blk0001.dat "%APPDATA%"\Electra\ /y
 echo.
-xcopy /s txleveldb %APPDATA%\Electra\txleveldb /E /y
+xcopy /s txleveldb "%APPDATA%"\Electra\txleveldb /E /y
 echo.
-xcopy /s database %APPDATA%\Electra\database\ /E /y
+xcopy /s database "%APPDATA%"\Electra\database\ /E /y
 echo.
 echo Wallet successfully updated!
 echo.
