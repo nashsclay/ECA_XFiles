@@ -3,12 +3,50 @@ echo off
 setlocal
 :MENU
 cls
-SET LASTUPDATE= June 3, 2018
+SET LASTUPDATE= June 8, 2018
 SET ELECTRAFILE=electra-desktop-setup-1.0.8.exe
 SET ELECTRAOLD=electra-desktop-setup-1.0.6.exe
 ECHO.
+ECHO Checking for all files to ensure proper extraction...
+ECHO.
+IF EXIST peers.dat (
+ECHO peers.dat file found
+) ELSE (
+ECHO peers.dat file missing!
+)
+ECHO.
+IF EXIST blk0001.dat (
+ECHO blk0001.dat file found
+) ELSE (
+ECHO blk001.dat file missing!
+)
+ECHO.
+IF EXIST txleveldb (
+ECHO txleveldb folder found
+) ELSE (
+ECHO txleveldb folder missing!
+)
+ECHO.
+IF EXIST database (
+ECHO database folder found
+) ELSE (
+ECHO database folder missing!
+)
+ECHO.
+IF EXIST electra-desktop-setup-1.0.6.exe (
+ECHO electra-desktop-setup-1.0.6.exe file found
+) ELSE (
+ECHO electra-desktop-setup-1.0.6.exe file missing!
+)
+ECHO.
+IF EXIST electra-desktop-setup-1.0.8.exe (
+ECHO electra-desktop-setup-1.0.8.exe file found
+) ELSE (
+ECHO electra-desktop-setup-1.0.8.exe file missing!
+)
+ECHO.
 ECHO ...............................................
-ECHO ECA User Support Fix-o-Lot v1.0
+ECHO ECA User Support Fix-o-Lot v1.3
 ECHO Windows 7, 8, 8.1, 10 ONLY!!
 ECHO PRESS 1, 2, 3, 5, 6, 7, 8 to select your task, or 9 to EXIT.
 ECHO ...............................................
