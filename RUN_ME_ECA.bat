@@ -6,6 +6,7 @@ cls
 SET LASTUPDATE= June 8, 2018
 SET ELECTRAFILE=electra-desktop-setup-1.0.8.exe
 SET ELECTRAOLD=electra-desktop-setup-1.0.6.exe
+SET MYVAR="null"
 ECHO.
 ECHO Checking for all files to ensure proper extraction...
 ECHO.
@@ -13,36 +14,45 @@ IF EXIST peers.dat (
 ECHO peers.dat file found
 ) ELSE (
 ECHO peers.dat file missing!
+SET MYVAR="quit"
 )
-ECHO.
 IF EXIST blk0001.dat (
 ECHO blk0001.dat file found
 ) ELSE (
 ECHO blk001.dat file missing!
+SET MYVAR="quit"
 )
-ECHO.
 IF EXIST txleveldb (
 ECHO txleveldb folder found
 ) ELSE (
 ECHO txleveldb folder missing!
+SET MYVAR="quit"
 )
-ECHO.
 IF EXIST database (
 ECHO database folder found
 ) ELSE (
 ECHO database folder missing!
+SET MYVAR="quit"
 )
-ECHO.
 IF EXIST electra-desktop-setup-1.0.6.exe (
 ECHO electra-desktop-setup-1.0.6.exe file found
 ) ELSE (
 ECHO electra-desktop-setup-1.0.6.exe file missing!
+SET MYVAR="quit"
 )
-ECHO.
 IF EXIST electra-desktop-setup-1.0.8.exe (
 ECHO electra-desktop-setup-1.0.8.exe file found
 ) ELSE (
 ECHO electra-desktop-setup-1.0.8.exe file missing!
+SET MYVAR="quit"
+)
+IF %MYVAR%=="quit" (
+ECHO.
+ECHO Script is now stopping due to all files not present. Please extract ALL files and try again.
+ECHO.
+pause
+exit
+ECHO.
 )
 ECHO.
 ECHO ...............................................
@@ -62,7 +72,7 @@ ECHO 8 - Blockchain Update Fast Sync
 ECHO 9 - EXIT
 ECHO.
 
-SET /P M=Type 1, 2, 3, 4, 5, 6, 7, or 8 then press ENTER: 
+SET /P M=Type 1, 2, 3, 4, 5, 6, 7, 8, or 9 then press ENTER: 
 IF %M%==1 GOTO PEERS
 IF %M%==2 GOTO WALLET
 IF %M%==3 GOTO BLOCKREMOVAL
